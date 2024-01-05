@@ -125,7 +125,7 @@ body
     grid-template-columns: auto 1fr auto;
     gap: 0 8px;
     height: 40px;
-    background-color: #1c522f;
+    background-color: hsl(141, 46%, 28%); /* 141 46% 28% / 1 */
     border-radius: 6px;
 }
 
@@ -146,11 +146,17 @@ body
     flex-direction: column;
     justify-content: center;
     font-size: 13px;
+    overflow: hidden;
 }
 
 #track-name
 {
+    overflow: scroll;
     font-weight: 700;
+}
+#track-desc
+{
+    overflow: scroll;
 }
 
 #player-control
@@ -168,6 +174,10 @@ body
     height: 40px;
     padding: 8px;
     cursor: pointer;
+}
+#player-control button:active
+{
+    background-color: transparent;
 }
 
 #progress
@@ -189,17 +199,23 @@ body
     background-color: #fff;
     height: 2px;
     border-radius: 2px;
-    transform: scaleX(0.01);
+    transform: scaleX(0);
     transform-origin: left;
-    transition: transform 10.1s ease-in-out;
+    /* transition: transform ease-in-out; */
+    /* transition-duration: 10s; */
     width: 100%;
+    animation:prg-bar-anim ease-in-out ;
+    animation-duration: 217.968s;
 }
 
-#prg-bar:hover
-{
-    transform: scaleX(1); /*Testing*/
+@keyframes prg-bar-anim{
+    from{
+        transform: scaleX(0);
+    }
+    to{
+        transform: scaleX(1);
+    }
 }
-
 
 #menu
 {
