@@ -118,6 +118,7 @@ body
     bottom: 0;
     width: 100dvw;
     box-shadow: rgb(0, 0, 0) 0px -100px 30px -30px inset;
+    z-index: 1;
 }
 
 #player
@@ -175,6 +176,11 @@ body
     gap: 8px;
 }
 
+#player-control-play
+{
+    fill: white;
+}
+
 #player-control button
 {
     background-color: transparent;
@@ -204,15 +210,18 @@ body
     right: 0;
 }
 
-#prg-bar
+#progress-fill
 {
     background-color: #fff;
     height: 2px;
     border-radius: 2px;
-    transform: scaleX(0);
+}
+
+.prg-bar
+{
+    width: 0%;
     transform-origin: left;
-    transition: transform 0.2s ease-in-out;
-    width: 100%;
+    transition: width 0.2s ease-in-out;
 }
 
 

@@ -1,0 +1,197 @@
+.fullScreen-player
+{
+    display: flex;
+    flex-direction: column !important;
+    margin: 0 !important;
+    position: fixed !important;
+    left: 0 !important;
+    bottom: 0 !important;
+    height: 100dvh !important;
+    width: 100dvw !important;
+    box-sizing: border-box !important;
+    z-index: 2 !important;
+    padding: 12px !important;
+    background-color: #111;
+    transition: all 0.3s;
+    transform: translateY(100dvh);
+    box-shadow: inset 0px -50dvh 70dvh -50px rgba(0, 0, 0, 0.641);
+}
+
+#full-player-header
+{
+    display: flex;
+    width: 100%;
+    margin-bottom: 40px;
+}
+
+#full-player-header-midle
+{
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+#full-player-header-right,
+#full-player-header-left
+{
+    height: 48px;
+    width: 48px;
+    padding: 12px;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+#full-player-img-container
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: calc(100dvh - 376.4px);
+    margin-bottom: 24px;
+}
+
+#full-player-img
+{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+#full-player-img img
+{
+    width: calc(100dvh - 376.4px);
+    max-width: calc(100dvw - 24px);
+    object-fit: contain;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+}
+
+#full-player-title
+{
+    display: flex;
+    margin: 0 12px;
+    margin-bottom: 16px;
+    box-sizing: border-box;
+}
+
+#full-player-title-left
+{
+    flex-grow: 1;
+}
+
+#full-player-title-left-name
+{
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 30px;
+}
+
+#full-player-title-left-artist
+{
+    font-size: 14px;
+    font-weight: 500;
+    color: #b9bdbc;
+}
+
+#full-player-title-right
+{
+    height: 48px;
+    width: 48px;
+    padding: 12px;
+    box-sizing: border-box;
+}
+
+
+#full-player-bar
+{
+    margin: 0 12px;
+    margin-bottom: 8px;
+    height: 59.2px;
+}
+
+#full-player-bar-progress
+{
+    height: 4px;
+    width: 100%;
+    border-radius: 4px;
+    background-color: #58615f;
+    margin-top: 20px;
+    margin-bottom: 5px;
+}
+
+#full-player-bar-fill
+{
+    height: 4px !important;
+    position: relative;
+    border-radius: 4px !important;
+    background-color: #fff;
+}
+
+#full-player-bar-fill::before
+{
+    content: "";
+    position: absolute;
+    height: 12px;
+    width: 12px;
+    background-color: #fff;
+    border-radius: 50%;
+    top: 50%;
+    right: -5px;
+    transform: translateY(-50%);
+}
+
+#full-player-bar-time
+{
+    display: flex;
+    font-size: 11px;
+    color: #b9bdbc;
+    justify-content: space-between;
+    line-height: 15.2px;
+}
+
+#full-player-control
+{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#shuffle,
+#repeat
+{
+    display: flex;
+    align-items: center;
+    fill: white;
+    cursor: pointer;
+    height: 48px;
+    width: 48px;
+    padding: 12px;
+    box-sizing: border-box;
+}
+
+#prev,
+#next
+{
+    display: flex;
+    align-items: center;
+    fill: white;
+    cursor: pointer;
+    height: 56px;
+    width: 56px;
+    padding: 12px;
+    box-sizing: border-box;
+}
+
+#full-player-control-play
+{
+    background-color: #fff;
+    height: 56px;
+    width: 56px;
+    border-radius: 50%;
+    margin: 3px;
+    box-sizing: border-box;
+    padding: 16px;
+    fill: black;
+}
