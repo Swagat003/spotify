@@ -83,7 +83,7 @@ const songs = [
         liked: false
     },
     {
-        title: `Pehle Bhi Mai`,
+        title: `Pehle Bhi Main`,
         artist: `Valin Mahapatra`,
         img_src: `./images/song-img11.jpeg`,
         src: `./songs/song11.mp3`,
