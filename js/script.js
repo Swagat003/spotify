@@ -8,6 +8,7 @@ let fullScreen = document.querySelector('.fullScreen-player');
 let backBtn = document.getElementById('full-player-header-right');
 var audio;
 let playing = false;
+let full_mode = false;
 
 const songs = [
     {
@@ -164,6 +165,13 @@ function playBtn() {
     });
 }
 
+function convertToTime(time) {
+    let minutes = Math.floor(time / 60);
+    let seconds = Math.floor(time % 60);
+    seconds = seconds < 10 ? `0${seconds}` : seconds;
+    return `${minutes}:${seconds}`;
+}
+
 function progress() {
     let { duration, currentTime } = audio;
     isNaN(duration) ? (duration = 0) : duration;
@@ -172,6 +180,10 @@ function progress() {
     prgBar.forEach(fill => {
         fill.style.width = `${ratio * 100}%`;
     });
+    let time_current = document.getElementById('full-player-bar-time-current');
+    let time_total = document.getElementById('full-player-bar-time-total');
+    time_current.innerHTML = convertToTime(currentTime);
+    time_total.innerHTML = convertToTime(duration);
 }
 
 function playSong(id) {
@@ -226,8 +238,22 @@ player.addEventListener("click", () => {
     let bgcolor = player.style.backgroundColor;
     fullScreen.style.backgroundColor = bgcolor;
     fullScreen.style.transform = "translateY(0)";
+    fullScreen.style.opacity = "1";
+    full_mode = true;
+    window.history.pushState({}, null, null);
 });
 
 backBtn.addEventListener("click", () => {
     fullScreen.style.transform = "translateY(100dvh)";
-})
+    fullScreen.style.opacity = "0";
+    full_mode = false;
+    window.history.back();
+});
+
+window.addEventListener('popstate', () => {
+    if (full_mode) {
+        fullScreen.style.transform = "translateY(100dvh)";
+        fullScreen.style.opacity = "0";
+        full_mode = false;
+    }
+});
