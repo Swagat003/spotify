@@ -6,6 +6,7 @@ let prgBar = document.querySelectorAll('.prg-bar');
 let song_cards = document.querySelectorAll('.song-card');
 let fullScreen = document.querySelector('.fullScreen-player');
 let backBtn = document.getElementById('full-player-header-right');
+let full_bar = document.querySelector("#full-player-bar-progress");
 var audio;
 let playing = false;
 let full_mode = false;
@@ -213,7 +214,9 @@ song_cards.forEach(card => {
         let songId = card.dataset.id;
         if (songId === undefined) {
             audio.pause();
-            play.innerHTML = `<svg viewBox="0 0 24 24"><path d="m7.05 3.606 13.49 7.788a.7.7 0 0 1 0 1.212L7.05 20.394A.7.7 0 0 1 6 19.788V4.212a.7.7 0 0 1 1.05-.606z" fill="white"></path></svg>`
+            for (const i of play) {
+                i.innerHTML = `<svg viewBox="0 0 24 24"><path d="m7.05 3.606 13.49 7.788a.7.7 0 0 1 0 1.212L7.05 20.394A.7.7 0 0 1 6 19.788V4.212a.7.7 0 0 1 1.05-.606z" ></path></svg>`
+            }
             playing = false;
         } else {
             playSong(songId);
@@ -256,4 +259,11 @@ window.addEventListener('popstate', () => {
         fullScreen.style.opacity = "0";
         full_mode = false;
     }
+});
+
+full_bar.addEventListener("click", (e) => {
+    let value = full_bar.clientWidth;
+    let offsetX = e.offsetX;
+    let duration = audio.duration;
+    audio.currentTime = (offsetX / value) * duration;
 });
