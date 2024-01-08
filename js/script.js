@@ -208,7 +208,7 @@ function playSong(id) {
 
 function setTimeLine(e){
     let value = full_bar.clientWidth;
-    let offsetX = e.pageX;
+    let offsetX = e.offsetX;
     let duration = audio.duration;
     audio.currentTime = ((offsetX / value) * duration);
 }
