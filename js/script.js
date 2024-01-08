@@ -6,6 +6,7 @@ let prgBar = document.querySelectorAll('.prg-bar');
 let song_cards = document.querySelectorAll('.song-card');
 let fullScreen = document.querySelector('.fullScreen-player');
 let backBtn = document.getElementById('full-player-header-right');
+let full_bar_container = document.querySelector("#full-player-bar-container");
 let full_bar = document.querySelector("#full-player-bar-progress");
 let thumb = window.getComputedStyle(document.getElementById('full-player-bar-fill'), '::before');
 var audio;
@@ -269,12 +270,12 @@ window.addEventListener('popstate', () => {
     }
 });
 
-full_bar.addEventListener("pointerdown", (e) => {
-    full_bar.setPointerCapture(e.pointerId);
+full_bar_container.addEventListener("pointerdown", (e) => {
+    full_bar_container.setPointerCapture(e.pointerId);
     setTimeLine(e);
-    full_bar.addEventListener("pointermove", setTimeLine);
-    full_bar.addEventListener("pointerup", (e)=>{
-        full_bar.removeEventListener("pointermove", setTimeLine);
+    full_bar_container.addEventListener("pointermove", setTimeLine);
+    full_bar_container.addEventListener("pointerup", (e)=>{
+        full_bar_container.removeEventListener("pointermove", setTimeLine);
     },{once:true});
 });
 
