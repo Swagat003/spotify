@@ -7,6 +7,7 @@ let song_cards = document.querySelectorAll('.song-card');
 let fullScreen = document.querySelector('.fullScreen-player');
 let backBtn = document.getElementById('full-player-header-right');
 let full_bar = document.querySelector("#full-player-bar-progress");
+let thumb = window.getComputedStyle(document.getElementById('full-player-bar-fill'), '::before');
 var audio;
 let playing = false;
 let full_mode = false;
@@ -205,6 +206,13 @@ function playSong(id) {
     })
 }
 
+function setTimeLine(e){
+    let value = full_bar.clientWidth;
+    let offsetX = e.pageX;
+    let duration = audio.duration;
+    audio.currentTime = ((offsetX / value) * duration);
+}
+
 player.style.backgroundColor = getHslColor();
 audio = new Audio(song.src);
 playBtn();
@@ -261,9 +269,14 @@ window.addEventListener('popstate', () => {
     }
 });
 
-full_bar.addEventListener("click", (e) => {
-    let value = full_bar.clientWidth;
-    let offsetX = e.offsetX;
-    let duration = audio.duration;
-    audio.currentTime = (offsetX / value) * duration;
+full_bar.addEventListener("pointerdown", (e) => {
+    full_bar.setPointerCapture(e.pointerId);
+    setTimeLine(e);
+    full_bar.addEventListener("pointermove", setTimeLine);
+    full_bar.addEventListener("pointerup", (e)=>{
+        full_bar.removeEventListener("pointermove", setTimeLine);
+    },{once:true});
 });
+
+
+

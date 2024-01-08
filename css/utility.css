@@ -121,6 +121,7 @@
     background-color: #58615f;
     margin-top: 20px;
     margin-bottom: 5px;
+    touch-action: none;
 }
 
 #full-player-bar-fill
