@@ -13,6 +13,11 @@ var audio;
 let playing = false;
 let full_mode = false;
 
+var metaColor = document.createElement('meta');
+metaColor.name = 'theme-color';
+metaColor.content = '#121212';
+document.head.appendChild(metaColor);
+
 const songs = [
     {
         title: `Deva Shree Ganesh`,
@@ -207,7 +212,7 @@ function playSong(id) {
     })
 }
 
-function setTimeLine(e){
+function setTimeLine(e) {
     let value = full_bar.clientWidth;
     let offsetX = e.offsetX;
     let duration = audio.duration;
@@ -274,9 +279,9 @@ full_bar_container.addEventListener("pointerdown", (e) => {
     full_bar_container.setPointerCapture(e.pointerId);
     setTimeLine(e);
     full_bar_container.addEventListener("pointermove", setTimeLine);
-    full_bar_container.addEventListener("pointerup", (e)=>{
+    full_bar_container.addEventListener("pointerup", (e) => {
         full_bar_container.removeEventListener("pointermove", setTimeLine);
-    },{once:true});
+    }, { once: true });
 });
 
 
