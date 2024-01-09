@@ -254,9 +254,10 @@ player_control.addEventListener("click", (e) => {
 player.addEventListener("click", () => {
     let bgcolor = player.style.backgroundColor;
     fullScreen.style.backgroundColor = bgcolor;
-    document.head.removeChild(metaColor);
-    metaColor.content = bgcolor;
-    document.head.appendChild(metaColor);
+    document.querySelector('meta[name="theme-color"]')?.setAttribute('content', bgcolor);
+    // document.head.removeChild(metaColor);
+    // metaColor.content = bgcolor;
+    // document.head.appendChild(metaColor);
     fullScreen.style.transform = "translateY(0)";
     fullScreen.style.opacity = "1";
     full_mode = true;
@@ -264,9 +265,10 @@ player.addEventListener("click", () => {
 });
 
 backBtn.addEventListener("click", () => {
-    document.head.removeChild(metaColor);
-    metaColor.content = '#121212';
-    document.head.appendChild(metaColor);
+    document.querySelector('meta[name="theme-color"]')?.setAttribute('content', '#121212');
+    // document.head.removeChild(metaColor);
+    // metaColor.content = '#121212';
+    // document.head.appendChild(metaColor);
     fullScreen.style.transform = "translateY(100dvh)";
     fullScreen.style.opacity = "0";
     full_mode = false;
@@ -275,9 +277,10 @@ backBtn.addEventListener("click", () => {
 
 window.addEventListener('popstate', () => {
     if (full_mode) {
-        document.head.removeChild(metaColor);
-        metaColor.content = '#121212';
-        document.head.appendChild(metaColor);
+        document.querySelector('meta[name="theme-color"]')?.setAttribute('content', '#121212');
+        // document.head.removeChild(metaColor);
+        // metaColor.content = '#121212';
+        // document.head.appendChild(metaColor);
         fullScreen.style.transform = "translateY(100dvh)";
         fullScreen.style.opacity = "0";
         full_mode = false;
