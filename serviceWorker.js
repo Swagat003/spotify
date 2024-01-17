@@ -5,6 +5,8 @@ const assets = [
     "/css/style.css",
     "/css/utility.css",
     "/js/script.js",
+    "/songs/song11.mp3",
+    "/images/song-img11.jpg",
     "/images/song-img1.jpg",
     "/images/song-img2.jpg",
     "/images/song-img3.jpg",
@@ -15,7 +17,6 @@ const assets = [
     "/images/song-img8.jpg",
     "/images/song-img9.jpg",
     "/images/song-img10.jpg",
-    "/images/song-img11.jpg",
     "/songs/song1.mp3",
     "/songs/song2.mp3",
     "/songs/song3.mp3",
@@ -25,8 +26,7 @@ const assets = [
     "/songs/song7.mp3",
     "/songs/song8.mp3",
     "/songs/song9.mp3",
-    "/songs/song10.mp3",
-    "/songs/song11.mp3"
+    "/songs/song10.mp3"
 ]
 
 self.addEventListener("install", installEvent => {
