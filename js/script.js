@@ -9,9 +9,14 @@ let backBtn = document.getElementById('full-player-header-right');
 let full_bar_container = document.querySelector("#full-player-bar-container");
 let full_bar = document.querySelector("#full-player-bar-progress");
 let thumb = window.getComputedStyle(document.getElementById('full-player-bar-fill'), '::before');
+let shuffle = document.querySelector('#shuffle');
+let prev = document.querySelector('#prev');
+let next = document.querySelector('#next');
+let repeat = document.querySelector('#repeat');
 var audio;
 let playing = false;
 let full_mode = false;
+let currentID = 6;
 
 var metaColor = document.createElement('meta');
 metaColor.name = 'theme-color';
@@ -104,6 +109,10 @@ function getHslColor() {
     return `hsl(${hue}, 46%, 28%)`;
 }
 
+function changeMetaThemeColor() {
+    let bgcolor = player.style.backgroundColor;
+    document.querySelector('meta[name="theme-color"]')?.setAttribute('content', bgcolor);
+}
 
 function selectSong(id) {
     song = songs[id - 1];
@@ -127,6 +136,8 @@ function selectSong(id) {
         }
     }
     player.style.backgroundColor = getHslColor();
+    let bgcolor = player.style.backgroundColor;
+    fullScreen.style.backgroundColor = bgcolor;
 }
 
 
@@ -197,6 +208,7 @@ function progress() {
 function playSong(id) {
     audio.pause();
     selectSong(id);
+    currentID = id;
     audio = new Audio(song.src);
     audio.play();
     for (const i of play) {
@@ -255,9 +267,6 @@ player.addEventListener("click", () => {
     let bgcolor = player.style.backgroundColor;
     fullScreen.style.backgroundColor = bgcolor;
     document.querySelector('meta[name="theme-color"]')?.setAttribute('content', bgcolor);
-    // document.head.removeChild(metaColor);
-    // metaColor.content = bgcolor;
-    // document.head.appendChild(metaColor);
     fullScreen.style.transform = "translateY(0)";
     fullScreen.style.opacity = "1";
     full_mode = true;
@@ -266,9 +275,6 @@ player.addEventListener("click", () => {
 
 backBtn.addEventListener("click", () => {
     document.querySelector('meta[name="theme-color"]')?.setAttribute('content', '#121212');
-    // document.head.removeChild(metaColor);
-    // metaColor.content = '#121212';
-    // document.head.appendChild(metaColor);
     fullScreen.style.transform = "translateY(100dvh)";
     fullScreen.style.opacity = "0";
     full_mode = false;
@@ -278,9 +284,6 @@ backBtn.addEventListener("click", () => {
 window.addEventListener('popstate', () => {
     if (full_mode) {
         document.querySelector('meta[name="theme-color"]')?.setAttribute('content', '#121212');
-        // document.head.removeChild(metaColor);
-        // metaColor.content = '#121212';
-        // document.head.appendChild(metaColor);
         fullScreen.style.transform = "translateY(100dvh)";
         fullScreen.style.opacity = "0";
         full_mode = false;
@@ -305,3 +308,31 @@ if ("serviceWorker" in navigator) {
     })
 }
 
+shuffle.addEventListener("click", (e) => {
+    let randNum = Math.floor(Math.random() * 11) + 1;
+    playSong(randNum);
+    changeMetaThemeColor();
+});
+
+prev.addEventListener("click", (e) => {
+    if (currentID > 1) {
+        playSong(currentID - 1);
+    } else {
+        playSong(songs.length);
+    }
+    changeMetaThemeColor();
+});
+
+next.addEventListener("click", (e) => {
+    if (currentID < songs.length) {
+        playSong(currentID + 1);
+    } else {
+        playSong(1);
+    }
+    changeMetaThemeColor();
+});
+
+repeat.addEventListener("click", (e) => {
+    playSong(currentID);
+    changeMetaThemeColor();
+});
