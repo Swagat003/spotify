@@ -105,7 +105,7 @@ const songs = [
 let song = songs[5]; //default
 
 function getHslColor() {
-    let hue = Math.floor(Math.random() * 360);
+    let hue = Math.random() * 360;
     return `hsl(${hue}, 46%, 28%)`;
 }
 
