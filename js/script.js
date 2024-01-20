@@ -309,7 +309,7 @@ if ("serviceWorker" in navigator) {
 }
 
 shuffle.addEventListener("click", (e) => {
-    let randNum = Math.floor(Math.random() * 11) + 1;
+    let randNum = Math.floor(Math.random() * songs.length) + 1;
     playSong(randNum);
     changeMetaThemeColor();
 });
