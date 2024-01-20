@@ -1,6 +1,7 @@
 {
     "name":"Spotify Clone",
     "short_name":"Spotify Clone",
+    "description":"Spotify clone web app made by Swagat Pritam Sahoo",
     "start_url":"index.html",
     "display": "standalone",
     "background_color": "#121212",
