@@ -5,6 +5,7 @@ const assets = [
     "/css/style.css",
     "/css/utility.css",
     "/js/script.js",
+    "/js/songsList.js",
     "/songs/song11.mp3",
     "/images/song-img11.jpg",
     "/images/song-img1.jpg",
