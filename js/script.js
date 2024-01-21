@@ -128,8 +128,9 @@ function progress() {
 
 function playSong(id) {
     audio.pause();
-    selectSong(id);
+    id = Number(id);
     currentID = id;
+    selectSong(id);
     audio = new Audio(song.src);
     audio.play();
     for (const i of play) {
